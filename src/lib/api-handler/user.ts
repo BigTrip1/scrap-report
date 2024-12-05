@@ -1,4 +1,3 @@
-import { Account, Profile } from 'next-auth'
 import { fetcher } from '@/lib/utils'
 
 export const fetchUserByEmail = async (email: string) => {

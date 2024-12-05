@@ -2,8 +2,8 @@ import { compare } from 'bcryptjs'
 import type { NextAuthConfig } from 'next-auth'
 
 import Credentials from 'next-auth/providers/credentials'
-// import { getUserByEmail } from '@/app/actions/authActions'
-import { fetchUserByEmail, fetchUserById } from '@/lib/api-handler/user'
+
+import { fetchUserByEmail } from '@/lib/api-handler/user'
 
 import { loginSchema } from '@/lib/schemas/loginSchema'
 
@@ -28,6 +28,7 @@ export default {
   callbacks: {
     async session({ session }) {
       const user = await fetchUserByEmail(session.user.email)
+
       if (user && session.user) {
         session.user.id = user._id
       }
