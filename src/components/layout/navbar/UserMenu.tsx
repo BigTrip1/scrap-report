@@ -19,10 +19,10 @@ const UserMenu = ({ userInfo }: Props) => {
       <Dropdown placement='bottom-end' className='text-black '>
         <DropdownTrigger className='cursor-pointer'>
           <div className='font-LatoBold text-black flex'>
+            <span>Options</span>
             <span className='mt-1'>
               <FaCaretDown size={18} />
             </span>
-            <span>Options</span>
           </div>
         </DropdownTrigger>
         <DropdownMenu variant='flat' aria-label='User actions menu'>

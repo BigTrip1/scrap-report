@@ -14,6 +14,7 @@ import { isJcbEmail, stringifyForComponent } from '@/lib/helper_functions'
 import { generateToken } from '@/lib/token'
 // import { sendVerificationEmail } from '@/lib/mail'
 import connectDB from '@/lib/db'
+import { sendVerificationEmail } from '@/lib/mail'
 
 // import { sendVerificationEmail } from '@/lib/mail'
 
@@ -98,7 +99,7 @@ export const registerUser = async (data: RegisterSchema): Promise<ActionResult<I
 
     // TODO: send email for varification
 
-    // await sendVerificationEmail(data.email, token.string)
+    await sendVerificationEmail(data.email, token.string)
 
     return {
       status: 'success',
