@@ -1,12 +1,12 @@
-import type { NextConfig } from 'next'
+/** @type {import('next').NextConfig} */
 
-const nextConfig: NextConfig = {
+const nextConfig = {
   /* config options here */
   images: {
     remotePatterns: [
       {
         protocol: 'http',
-        hostname: 'server_address',
+        hostname: '172.30.60.22',
         pathname: '**',
       },
     ],
@@ -21,14 +21,14 @@ const nextConfig: NextConfig = {
     MONGODB_URI: 'mongodb://localhost:27017/jcb-starter-template',
     // auth
     AUTH_SECRET: 'IWeI3yfGGDKrnN/9doe9IC1ZAvBJIN3HYsW12B9ZgBo=',
-    // web socket
-    WEB_SOCKET_HOST: 'http://172.30.60.22:3000',
+    // NEXTAUTH_URL: 'http://172.30.60.22:3000',
+    // AUTH_TRUST_HOST: 'http://172.30.60.22:3000',
+
     // images
-    IMAGE_ENDPOINT: 'server_address/api/upload',
+    IMAGE_ENDPOINT: 'http://172.30.60.22:3000/api/upload',
     // url
-    BACKEND_SERVER_HOST: 'http://172.30.60.22:3001',
-    PUBLIC_BASE_URL: 'http://172.30.60.22:3000',
-    NEXT_PUBLIC_APP_URL: 'http://172.30.60.22:3000',
+    BACKEND_SERVER_URL: 'http://172.30.60.22:3010',
+    BASE_URL: 'http://172.30.60.22:3000',
     // email
     SMTP_HOST: 'smtp.jcb.local',
     SMTP_PORT: '25',

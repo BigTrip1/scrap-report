@@ -9,7 +9,7 @@ const transporter = createTransport({
 } as TransportOptions)
 
 export const sendVerificationEmail = async (email: string, token: string) => {
-  const verifyLink = `${process.env.PUBLIC_BASE_URL}/verify-email?token=${token}`
+  const verifyLink = `${process.env.BASE_URL}/verify-email?token=${token}`
 
   const body = `
   <h1>Verify your email address</h1>

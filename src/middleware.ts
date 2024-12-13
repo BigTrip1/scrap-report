@@ -1,45 +1,32 @@
-import NextAuth from 'next-auth'
+import { NextResponse } from 'next/server'
+import { auth } from './auth'
+import { authRoutes, publicRoutes } from './routes'
 
-import { routes } from '@/routes'
-import authConfig from '@/auth.config'
-
-const { auth: withAuthMiddleware } = NextAuth(authConfig)
-
-export default withAuthMiddleware((req) => {
-  const isLoggedIn = !!req.auth
+export default auth((req) => {
   const { nextUrl } = req
-  // console.log({ nextUrl })
+  const isLoggedIn = !!req.auth
 
-  const isApiAuthRoute = nextUrl.pathname.startsWith(routes.apiAuthPrefix)
-  const isAuthRoute = routes.auth.includes(nextUrl.pathname)
-  const isPublicRoute = routes.public.includes(nextUrl.pathname)
-  const defaultUrl = new URL(routes.defaultLoginRedirect, nextUrl)
+  const isPublic = publicRoutes.includes(nextUrl.pathname)
+  const isAuthRoute = authRoutes.includes(nextUrl.pathname)
 
-  // if (isApiAuthRoute) {
-  //   return undefined
+  if (isPublic) {
+    return NextResponse.next()
+  }
+
+  if (isAuthRoute) {
+    if (isLoggedIn) {
+      return NextResponse.redirect(new URL('/', nextUrl))
+    }
+    return NextResponse.next()
+  }
+
+  // if (!isPublic && !isLoggedIn) {
+  //   return NextResponse.redirect(new URL('/login', nextUrl))
   // }
 
-  // if (isAuthRoute) {
-  //   if (isLoggedIn) {
-  //     return Response.redirect(defaultUrl)
-  //   }
-  //   return undefined
-  // }
-
-  // if (!isPublicRoute && !isLoggedIn) {
-  //   let callbackUrl = nextUrl.pathname
-  //   if (nextUrl.search) callbackUrl += nextUrl.search
-
-  //   const encodedCallbackUrl = encodeURIComponent(callbackUrl)
-  //   return Response.redirect(new URL(
-  //     `/signin?callbackUrl=${encodedCallbackUrl}`,
-  //     nextUrl
-  //   ))
-  // }
-
-  return undefined
+  return NextResponse.next()
 })
 
 export const config = {
-  matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
+  matcher: ['/((?!api|_next/static|_next/image|images|favicon.ico).*)'],
 }

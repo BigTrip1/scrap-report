@@ -2,7 +2,7 @@ import { fetcher } from '@/lib/utils'
 
 export const fetchUserByEmail = async (email: string) => {
   try {
-    const user = await fetcher(`${process.env.NEXT_PUBLIC_APP_URL}/api/user/fetch-by-email`, {
+    const user = await fetcher(`${process.env.BASE_URL}/api/user/fetch-by-email`, {
       method: 'POST',
       body: JSON.stringify({ email }),
     })
@@ -18,7 +18,7 @@ export const fetchUserByEmail = async (email: string) => {
 
 export const fetchUserById = async (id: string) => {
   try {
-    const user = await fetcher(`${process.env.NEXT_PUBLIC_APP_URL}/api/user/fetch-by-id`, {
+    const user = await fetcher(`${process.env.BASE_URL}/api/user/fetch-by-id`, {
       method: 'POST',
       body: JSON.stringify({ id }),
     })

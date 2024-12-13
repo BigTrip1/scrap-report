@@ -4,7 +4,7 @@ import User from '@/models/User'
 import { userData } from '@/db_seed_data/userData'
 import bcrypt from 'bcryptjs'
 import socket from '@/socket'
-import axios from 'axios'
+
 import connectDB from '@/lib/db'
 
 export const seedDB = async () => {
@@ -20,24 +20,6 @@ export const seedDB = async () => {
     }, 3000)
 
     // ? web socket test end
-
-    // ? post to backend test start
-    // let link = `${process.env.BACKEND_SERVER_HOST}/send-email`
-    // // let link = `http://172.30.60.22:3001/send-email`
-
-    // const data = {
-    //   message: 'ok',
-    // }
-
-    // try {
-    //   const response = await axios.post(link, data)
-
-    //   console.log(response.data)
-    // } catch (error) {
-    //   console.log(error)
-    // }
-
-    // ? post to backend test end
 
     // !seed users
     const usersExist = await User.findOne({})
