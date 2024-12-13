@@ -3,7 +3,7 @@
 import User from '@/models/User'
 import { userData } from '@/db_seed_data/userData'
 import bcrypt from 'bcryptjs'
-import socket from '@/socket'
+import socket from '@/lib/socket'
 
 import connectDB from '@/lib/db'
 

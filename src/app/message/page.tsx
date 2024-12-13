@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 
-import socket from '@/socket'
+import socket from '@/lib/socket'
 
 import MainHeader from '@/components/layout/MainHeader'
 
@@ -15,11 +15,6 @@ const MessagePage = () => {
       // Execute any command
       setUpating(data)
     })
-    // socket.on('updatingFaultsFinished', (data) => {
-    //   // console.log('Recieved from SERVER ::', data)
-    //   // Execute any command
-    //   setUpating(false)
-    // })
   }, [socket])
 
   return (
