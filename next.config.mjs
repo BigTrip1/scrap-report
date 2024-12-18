@@ -25,7 +25,7 @@ const nextConfig = {
     // AUTH_TRUST_HOST: 'http://172.30.60.22:3000',
 
     // images
-    IMAGE_ENDPOINT: 'http://172.30.60.22:3000/api/upload',
+    IMAGE_ENDPOINT: 'http://localhost:3000/api/upload',
     // url
     BACKEND_SERVER_URL: 'http://172.30.60.22:3010',
     BASE_URL: 'http://172.30.60.22:3000',

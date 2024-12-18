@@ -32,3 +32,12 @@ export const capitalizeFirstLetterOfAllWords = (string: string) => {
 
   return lowerString.replace(/(^\w{1})|(\s+\w{1})/g, (letter) => letter.toUpperCase())
 }
+
+export const formatDateInLocal = (date: Date) => {
+  return date.toLocaleDateString([], {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+    hour12: true,
+  })
+}
