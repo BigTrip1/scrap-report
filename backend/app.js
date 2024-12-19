@@ -1,14 +1,18 @@
 import express from 'express'
 import cors from 'cors'
 import path from 'path'
+import { fileURLToPath } from 'url'
 import { createServer } from 'http'
 import { Server } from 'socket.io'
 
-import socket from './controllers/socket'
+import socket from './controllers/socket.js'
 
 const app = express()
 
 app.use(cors())
+
+const __filename = fileURLToPath(import.meta.url) // get the resolved path to the file
+const __dirname = path.dirname(__filename) // get the name of the directory
 
 app.use(express.static(path.join(__dirname, 'uploads')))
 

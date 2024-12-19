@@ -18,7 +18,7 @@ const nextConfig = {
   },
   env: {
     // db
-    MONGODB_URI: 'mongodb://localhost:27017/jcb-starter-template',
+    MONGODB_URI: 'mongodb://127.0.0.1:27017/jcb-starter-template',
     // auth
     AUTH_SECRET: 'IWeI3yfGGDKrnN/9doe9IC1ZAvBJIN3HYsW12B9ZgBo=',
     // NEXTAUTH_URL: 'http://172.30.60.22:3000',
