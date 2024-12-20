@@ -15,6 +15,7 @@ import { generateToken } from '@/lib/token'
 // import { sendVerificationEmail } from '@/lib/mail'
 import connectDB from '@/lib/db'
 import { sendVerificationEmail } from '@/lib/mail'
+import socket from '@/lib/socket'
 
 // import { sendVerificationEmail } from '@/lib/mail'
 
@@ -65,6 +66,12 @@ export const signInUser = async (data: LoginSchema): Promise<ActionResult<string
 
 export const signOutUser = async () => {
   await connectDB()
+  // let loggedInUser = await getLoggedInUser()
+
+  // if (loggedInUser) {
+  //   socket.emit('logout', loggedInUser._id)
+  // }
+
   await signOut({ redirectTo: '/' })
 }
 

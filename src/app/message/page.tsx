@@ -15,6 +15,9 @@ const MessagePage = () => {
       // Execute any command
       setUpating(data)
     })
+    return () => {
+      socket.off('dpuUpdating') // This represents the unmount function.
+    }
   }, [socket])
 
   return (

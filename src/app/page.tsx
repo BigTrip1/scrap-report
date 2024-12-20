@@ -1,6 +1,5 @@
 import BarChart from '@/components/charts/demo/BarChart'
 import FileUploader from '@/components/files/FileUploader'
-import socket from '@/lib/socket'
 
 export default function Home() {
   return (

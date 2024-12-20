@@ -8,12 +8,24 @@ import { IDivision, IUser } from '@/types'
 import { Dropdown, DropdownItem, DropdownMenu, DropdownSection, DropdownTrigger } from '@nextui-org/react'
 
 import Link from 'next/link'
+import socket from '@/lib/socket'
+import { useEffect } from 'react'
 
 type Props = {
   userInfo: IUser
 }
 
 const UserMenu = ({ userInfo }: Props) => {
+  useEffect(() => {
+    if (userInfo)
+      socket.on('active', () => {
+        // Execute any command
+        socket.emit('active', userInfo._id)
+      })
+    return () => {
+      socket.off('active') // This represents the unmount function.
+    }
+  }, [socket])
   return (
     <>
       <Dropdown placement='bottom-end' className='text-black '>

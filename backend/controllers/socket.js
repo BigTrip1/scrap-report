@@ -3,7 +3,7 @@ const realTime = async (io) => {
 
   // create array of connected sockets so as to only run machine update cycle once
 
-  let scoketArr = []
+  let activeUsers = []
 
   //on connect
   io.on('connection', (socket) => {
@@ -12,6 +12,23 @@ const realTime = async (io) => {
 
     // -----------------------start  of update only one group of machiunes  function  ------------------------  //
     //listen for this message
+    socket.on('active', (data) => {
+      console.log(data)
+
+      if (!activeUsers.includes(data)) {
+        activeUsers.push(data)
+        io.emit('activeUsers', newArr)
+      }
+    })
+    socket.on('logout', (data) => {
+      console.log(data)
+
+      if (activeUsers.includes(data)) {
+        let newArr = activeUsers.filter((x) => x !== data)
+        activeUsers = newArr
+        io.emit('activeUsers', newArr)
+      }
+    })
     socket.on('dpuUpdating', (data) => {
       console.log(data)
 
@@ -31,7 +48,7 @@ const realTime = async (io) => {
 
     // end of socket disconnect
 
-    // console.log(scoketArr)
+    console.log(activeUsers)
     // console.log(num)
   })
 }

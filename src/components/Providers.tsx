@@ -1,5 +1,3 @@
-'use client'
-
 import { NextUIProvider } from '@nextui-org/react'
 import { ReactNode } from 'react'
 import { Toaster } from 'react-hot-toast'

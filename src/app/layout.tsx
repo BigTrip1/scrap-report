@@ -17,6 +17,7 @@ export default async function RootLayout({
   children: React.ReactNode
 }>) {
   const session = await auth()
+
   return (
     <SessionProvider session={session}>
       <html lang='en' className='bg-black text-white'>
