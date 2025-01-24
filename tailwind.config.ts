@@ -1,84 +1,81 @@
-import type { Config } from 'tailwindcss'
-import { nextui } from '@nextui-org/react'
+import { nextui } from "@nextui-org/react";
 
-export default {
+/** @type {import('tailwindcss').Config} */
+const config = {
+  darkMode: ["class"],
   content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
-    './node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}',
+    "./src/pages/**/*.{ts,tsx}",
+    "./src/components/**/*.{ts,tsx}",
+    "./src/app/**/*.{ts,tsx}",
+    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
+  prefix: "",
   theme: {
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
+      },
+    },
     extend: {
       colors: {
-        jcb: '#fcb026',
-        darkTable: '#212529',
-        darkTableDivide: '#565656',
-        darkTableHead: '#2A2C2E',
-        darkTableHover: '#57534e',
-        dashBox: '#33373e',
-        dashBackground: '#20232a',
-        open: '#dc2626',
-        contained: '#eab308',
-        closed: '#16a34a',
-        tbc: '#64748b',
-        audited: '#2563eb',
-        issued: '#78716c',
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+        },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
       },
-      fontFamily: {
-        Lato: 'Lato',
-        LatoBold: 'Lato-Bold',
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
       },
-      height: {
-        verticalCenter: 'calc(100vh - 90px)',
-        '10h': '10vh',
-        '15h': '15vh',
-        '20h': '20vh',
-        '25h': '25vh',
-        '30h': '30vh',
-        '35h': '35vh',
-        '40h': '40vh',
-        '45h': '45vh',
-        '50h': '50vh',
-        '52h': '52vh',
-        '55h': '55vh',
-        '60h': '60vh',
-        '65h': '65vh',
-        '70h': '70vh',
-        '72h': '72vh',
-        '75h': '75vh',
-        '80h': '80vh',
-        '85h': '85vh',
-        '90h': '90vh',
-        '93h': '93vh',
-        '95h': '95vh',
-        '100h': '100vh',
+      keyframes: {
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
       },
-      width: {
-        '10w': '10vw',
-        '13w': '14vw',
-        '15w': '15vw',
-        '20w': '20vw',
-        '22w': '22vw',
-        '25w': '25vw',
-        '30w': '30vw',
-        '35w': '35vw',
-        '40w': '40vw',
-        '45w': '45vw',
-        '50w': '50vw',
-        '55w': '55vw',
-        '60w': '60vw',
-        '65w': '65vw',
-        '70w': '70vw',
-        '75w': '75vw',
-        '80w': '80vw',
-        '85w': '85vw',
-        '90w': '90vw',
-        '95w': '95vw',
-        '100w': '100vw',
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
   },
-  darkMode: 'class',
   plugins: [nextui()],
-} satisfies Config
+};
+
+export default config;

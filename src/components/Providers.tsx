@@ -1,14 +1,17 @@
-import { NextUIProvider } from '@nextui-org/react'
-import { ReactNode } from 'react'
-import { Toaster } from 'react-hot-toast'
+"use client";
 
-const Providers = async ({ children }: { children: ReactNode }) => {
+import { NextUIProvider } from "@nextui-org/react";
+import { ThemeProvider as NextThemesProvider } from "next-themes";
+import { ReactNode } from "react";
+import { Toaster } from "react-hot-toast";
+
+export function Providers({ children }: { children: ReactNode }) {
   return (
     <NextUIProvider>
-      <Toaster />
-      {children}
+      <NextThemesProvider attribute="class" defaultTheme="light" enableSystem>
+        <Toaster />
+        {children}
+      </NextThemesProvider>
     </NextUIProvider>
-  )
+  );
 }
-
-export default Providers

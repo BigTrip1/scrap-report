@@ -1,14 +1,14 @@
-import BarChart from '@/components/charts/demo/BarChart'
-import FileUploader from '@/components/files/FileUploader'
+"use client";
+
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
-  return (
-    <section>
-      <div>Home page</div>
-      <div className='h-80h w-95w'>
-        <BarChart />
-        {/* <FileUploader /> */}
-      </div>
-    </section>
-  )
+  const router = useRouter();
+
+  useEffect(() => {
+    router.push("/scrap");
+  }, [router]);
+
+  return null;
 }

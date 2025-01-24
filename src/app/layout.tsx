@@ -1,34 +1,31 @@
-import type { Metadata } from 'next'
-import { SessionProvider } from 'next-auth/react'
-import { auth } from '@/auth'
-import Providers from '@/components/Providers'
-import './globals.css'
-import TopNav from '@/components/layout/navbar/TopNav'
-import Footer from '@/components/layout/Footer'
+import type { Metadata } from "next";
+import { auth } from "@/auth";
+import "./globals.css";
+import ClientLayout from "./ClientLayout";
+import { Providers } from "@/components/Providers";
+import { CurrencyProvider } from "@/contexts/CurrencyContext";
 
 export const metadata: Metadata = {
-  title: 'JCB',
-  description: 'JCB',
-}
+  title: "JCB",
+  description: "JCB",
+};
 
 export default async function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
-  const session = await auth()
+  const session = await auth();
 
   return (
-    <SessionProvider session={session}>
-      <html lang='en' className='bg-black text-white'>
-        <body className='font-Lato'>
+    <html lang="en" suppressHydrationWarning>
+      <body>
+        <CurrencyProvider>
           <Providers>
-            <TopNav />
-            <main className='mx-4 mb-12'>{children}</main>
-            <Footer />
+            <ClientLayout session={session}>{children}</ClientLayout>
           </Providers>
-        </body>
-      </html>
-    </SessionProvider>
-  )
+        </CurrencyProvider>
+      </body>
+    </html>
+  );
 }
